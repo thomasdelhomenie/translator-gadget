@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="Translator" description="Translator gadget"/>
+<Content type="html">
+<![CDATA[    
+<script type="text/javascript">
+
+function Translator(text, translationId) {
+	this.text = text;
+	this.translationId = translationId;
+}
+
+Translator.prototype.makeRequest = function(url, callback) {
+	var params = {};
+	params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.GET;
+	params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
+
+	/*
+	var ts = new Date().getTime();
+	var sep = "?";
+	if (refreshInterval && refreshInterval > 0) {
+		ts = Math.floor(ts / refreshInterval);
+	}
+	if (url.indexOf("?") > -1) {
+		sep = "&";
+	}
+	url = [ url, sep, "nocache=", ts ].join("");
+	*/
+
+	gadgets.io.makeRequest(encodeURI(url), callback, params);
+}
+
+Translator.prototype.handleResponse = function(response) {
+	var text = response.text;
+
+	var indexResult = text.indexOf("<div id=\"result\">");
+	indexResult = text.indexOf(">", indexResult) + 1;
+	indexResult = text.indexOf(">", indexResult) + 1;
+	var y = text.indexOf("</div>", indexResult);
+	var toText = text.substring(indexResult, y);
+
+	var divTranslatedText = document.getElementById("translatedText");
+
+	divTranslatedText.innerHTML= toText;
+}
+
+Translator.prototype.translate = function() {
+	var url = "http://babelfish.yahoo.com/translate_txt?ei=UTF-8&doit=done&fr=bf-res&intl=1&tt=urltext&trtext=" + this.text + "&lp=" + this.translationId;
+
+	this.makeRequest(url, this.handleResponse);
+}
+
+function translate() {
+	var textArea = document.getElementById("text");
+	var text = textArea.value;
+
+	var selectTranslationId = document.getElementById("translationId");
+	var selectedTranslationId = selectTranslationId.options[selectTranslationId.selectedIndex].value;
+
+	var translator = new Translator(text, selectedTranslationId);
+
+	translator.translate();
+}
+</script>
+
+<style type="text/css">
+/*
+body{
+	font: 11px Tahoma,Verdana,Arial,Helvetica,sans-serif;
+	height:100%;
+	margin:0 auto;
+	padding:0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.FloatLeft{
+	float: left;
+}
+.FloatRight{
+	float: right;
+}
+.ClearRight{
+	clear:right;
+}
+.ClearLeft{
+	clear: left;
+}
+
+.GadgetBgTitleLeft{
+	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -70px;
+	padding-left: 4px;
+}
+
+.GadgetBgTitleCenter{
+	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") repeat-x left -92px;
+	height: 22px;
+}
+
+.GadgetBgTitleRight{
+	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right -70px;
+	padding-right:3px;
+}
+
+.TxtTitleGadget {
+	font-weight: bold;
+	float: left;
+	line-height: 22px;
+	color: #5b5b5b;
+	padding-left: 8px;
+}
+
+.GadgetBgTitleCenter .IconEditGadGet{
+	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat center -180px;
+	display: block;
+	height: 13px;
+	width: 13px;
+	padding: 6px 2px 0px 2px;
+}
+
+.GadgetBgTitleCenter .IconMinimize{
+	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat center -202px;
+	display: block;
+	height: 13px;
+	width: 13px;
+	padding: 6px 2px 0px 2px;
+}
+
+.GadgetBgTitleCenter .IconClose{
+	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat center -224px;
+	display: block;
+	height: 13px;
+	width: 13px;
+	padding: 6px 2px 0px 2px;
+}
+*/			
+/**************************** Content Gadgets *********************************/
+/*			
+.ContentGadGet{
+}
+
+.ContentGadGet .BgLeftTitleContent{
+	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left top;	
+	padding-left: 6px;
+}
+
+.ContentGadGet .BgCentertTitleContent{
+	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") repeat-x left -35px;	
+	height: 35px;
+	line-height: 35px;
+}
+
+.ContentGadGet .BgRightTitleContent{
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right top;	
+	padding-right: 8px;
+}
+.ContentGadGet .IconArrow{
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right -246px;
+	float: right;
+	height: 35px;
+	width: 16px;
+}
+.ContentGadGet .TextTitle{
+	color: #fff;
+	font-weight: bold;
+}
+
+.ContentGadGet .BgLeftFooterContent{
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -114px;	
+	padding-left: 9px;
+}
+
+.ContentGadGet .BgCenterFooterContent{
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") repeat-x center -130px;
+	height: 8px;
+}
+
+.ContentGadGet .BgRightFooterContent{
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right -122px;	
+	padding-right: 8px;
+}
+
+.ContentGadGet .BgCenterContent{
+	background: url("/eXoDMSGadgets/skin/images/BgBottomConten.gif") repeat-x left bottom;
+}
+.ContentGadGet .BgLeftContent{
+	border-left: solid 1px #9c9c9c;
+}
+
+.ContentGadGet .BgRightContent{
+	background: url("/eXoDMSGadgets/skin/images/GagetBorRight.gif") repeat-y right top;
+	padding-right: 3px;
+}
+
+.ContentGadGet .BgRightContent .IconDriver {
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -281px;
+
+}
+
+.ContentGadGet .BgRightContent .IconPdf {
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -352px;
+}
+
+.ContentGadGet .BgRightContent .IconDoc {
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -396px;
+}
+
+.ContentGadGet .BgRightContent .IconJpg {
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -440px;
+}
+
+.ContentGadGet .BgRightContent .IconNote {
+	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -308px;
+}
+
+.ContentGadGet .BgRightContent .BgTitle{
+	background: #dfeefa;
+	width: auto;
+	line-height: 16px;
+	font-weight: bold;
+	color: #468bcc;
+}
+
+.ContentGadGet .BgRightContent .ItemIcon {
+	border-bottom:1px solid #CCCCCC;
+	line-height: 16px;
+	margin: 0px 5px 0px 11px;
+	padding: 0px 0 0px 22px;
+	width: auto;
+}
+
+.ContentGadGet .BgRightContent .NotAvailableItemIcon {
+	margin: 0px 5px 0px 11px;
+	padding:5px;
+	text-align: center;
+	font-style: italic;
+	color: #EF5604;
+	width: auto;
+	font-weight:normal;
+	height:30px;
+}
+
+
+.ContentGadGet .BgRightContent .TextDateTime{
+	color: #83add4;
+	float: left;
+	padding-left: 26px;
+}
+
+.ContentGadGet .BgRightContent  .DateTime{
+	color: #83add4;
+	font-weight: nomarl;
+}
+
+.ContentGadGet .BgRightContent a{
+	color: #000;
+	display: block;
+}
+
+.ContentGadGet .BgRightContent a:hover{
+	color: orange;
+}
+*/
+</style>
+
+<body>
+
+			<div class="ContentGadGet">
+				<div class="BgLeftTitleContent">
+					<div class="BgRightTitleContent">
+						<div class="BgCentertTitleContent">
+							<div class="IconArrow"><span></span></div>
+							<div class="TextTitle">Translator</div>
+							<div class="ClearRight"><span></span></div>
+						</div>
+					</div>
+				</div>
+				<div class="BgRightContent">
+					<div class="BgLeftContent">
+						<div class="BgCenterContent">
+						<div id="BgTitle" class="BgTitle">
+							<div class="NotAvailableItemIcon">
+									Error message...
+							</div>
+						</div>
+						<div id="translatedText"></div>
+						<textarea id="text" cols="33" rows="4"></textarea>
+						<select id="translationId">
+							<option value="en_fr">English to French</option>
+							<option value="en_es">English to Spanish</option>
+							<option value="en_de">English to Deutsch</option>
+							<option value="en_nl">English to Nederland</option>
+							<option value="en_it">English to Italian</option>
+							<option value="en_ja">English to Japanese</option>
+							<option value="en_ko">English to Korean</option>
+							<option value="en_pt">English to Portugese</option>
+							<option value="fr_en">French to English</option>
+							<option value="es_en">Spanish to English</option>
+							<option value="nl_en">Nederland to English</option>
+							<option value="it_en">Italian to English</option>
+							<option value="ja_en">Japanese to English</option>
+							<option value="ko_en">Korean to English</option>
+							<option value="pt_en">Portugese to English</option>
+						</select>
+						<input type="button" value="Translate" onclick="translate();"/>
+					</div>
+					</div>
+				</div>
+				<div class="BgLeftFooterContent">
+					<div class="BgRightFooterContent">
+						<div class="BgCenterFooterContent"><span></span></div>
+					</div>
+				</div>
+			</div>
+
+</body>
+
+]]>
+</Content>
+</Module>
