@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-<ModulePrefs title="Translator" description="Translator gadget"/>
+<ModulePrefs title="Translator" description="Translator gadget">
+	<Require feature="dynamic-height"/>
+	<Require feature="minimessage"/>
+</ModulePrefs>
 <Content type="html">
 <![CDATA[    
 <script type="text/javascript">
+
+function init() {
+	gadgets.window.adjustHeight();
+}
 
 function Translator(text, translationId) {
 	this.text = text;
@@ -41,7 +48,12 @@ Translator.prototype.handleResponse = function(response) {
 
 	var divTranslatedText = document.getElementById("translatedText");
 
-	divTranslatedText.innerHTML= toText;
+	divTranslatedText.innerHTML = toText;
+	
+	document.getElementById("msg").style.display = "block";
+	
+	// Tells gadget to resize itself
+    gadgets.window.adjustHeight();
 }
 
 Translator.prototype.translate = function() {
@@ -61,6 +73,7 @@ function translate() {
 
 	translator.translate();
 }
+
 </script>
 
 <style type="text/css">
@@ -146,7 +159,7 @@ a {
 	padding-left: 6px;
 }
 
-.ContentGadGet .BgCentertTitleContent{
+.ContentGadGet .BgCenterTitleContent{
 	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") repeat-x left -35px;	
 	height: 35px;
 	line-height: 35px;
@@ -166,6 +179,31 @@ a {
 	color: #fff;
 	font-weight: bold;
 }
+
+.ContentGadGet #msg {
+	display: none;
+}
+
+.ContentGadGet .BgLeftMsgContent{
+	background:#FF4040 url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left top;	
+	padding-left: 6px;
+}
+
+.ContentGadGet .BgCenterMsgContent{
+	background:#FF4040 url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") repeat-x left -35px;	
+	height: 35px;
+	line-height: 35px;
+}
+
+.ContentGadGet .BgRightMsgContent{
+	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right top;	
+	padding-right: 8px;
+}
+.ContentGadGet .TextMsg{
+	color: #fff;
+	font-weight: bold;
+}
+
 
 .ContentGadGet .BgLeftFooterContent{
 	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -114px;	
@@ -265,46 +303,53 @@ a {
 */
 </style>
 
-<body>
+<body onload="init()">
 
 			<div class="ContentGadGet">
+				<div class="BgLeftMsgContent" id="msg">
+					<div class="BgRightMsgContent">
+						<div class="BgCenterMsgContent">
+							<div class="TextMsg">Error !</div>
+							<div class="ClearRight"><span></span></div>
+						</div>
+					</div>
+				</div>
+				<!--
 				<div class="BgLeftTitleContent">
 					<div class="BgRightTitleContent">
-						<div class="BgCentertTitleContent">
+						<div class="BgCenterTitleContent">
 							<div class="IconArrow"><span></span></div>
 							<div class="TextTitle">Translator</div>
 							<div class="ClearRight"><span></span></div>
 						</div>
 					</div>
 				</div>
+				-->
 				<div class="BgRightContent">
 					<div class="BgLeftContent">
 						<div class="BgCenterContent">
-						<div id="BgTitle" class="BgTitle">
-							<div class="NotAvailableItemIcon">
-									Error message...
-							</div>
-						</div>
 						<div id="translatedText"></div>
 						<textarea id="text" cols="33" rows="4"></textarea>
-						<select id="translationId">
-							<option value="en_fr">English to French</option>
-							<option value="en_es">English to Spanish</option>
-							<option value="en_de">English to Deutsch</option>
-							<option value="en_nl">English to Nederland</option>
-							<option value="en_it">English to Italian</option>
-							<option value="en_ja">English to Japanese</option>
-							<option value="en_ko">English to Korean</option>
-							<option value="en_pt">English to Portugese</option>
-							<option value="fr_en">French to English</option>
-							<option value="es_en">Spanish to English</option>
-							<option value="nl_en">Nederland to English</option>
-							<option value="it_en">Italian to English</option>
-							<option value="ja_en">Japanese to English</option>
-							<option value="ko_en">Korean to English</option>
-							<option value="pt_en">Portugese to English</option>
-						</select>
-						<input type="button" value="Translate" onclick="translate();"/>
+						<div>
+							<select id="translationId">
+								<option value="en_fr">English to French</option>
+								<option value="en_es">English to Spanish</option>
+								<option value="en_de">English to Deutsch</option>
+								<option value="en_nl">English to Nederland</option>
+								<option value="en_it">English to Italian</option>
+								<option value="en_ja">English to Japanese</option>
+								<option value="en_ko">English to Korean</option>
+								<option value="en_pt">English to Portugese</option>
+								<option value="fr_en">French to English</option>
+								<option value="es_en">Spanish to English</option>
+								<option value="nl_en">Nederland to English</option>
+								<option value="it_en">Italian to English</option>
+								<option value="ja_en">Japanese to English</option>
+								<option value="ko_en">Korean to English</option>
+								<option value="pt_en">Portugese to English</option>
+							</select>
+							<input type="button" value="Translate" onclick="translate();"/>
+						</div>
 					</div>
 					</div>
 				</div>
