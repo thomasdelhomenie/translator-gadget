@@ -77,7 +77,6 @@ function translate() {
 </script>
 
 <style type="text/css">
-/*
 body{
 	font: 11px Tahoma,Verdana,Arial,Helvetica,sans-serif;
 	height:100%;
@@ -103,17 +102,17 @@ a {
 }
 
 .GadgetBgTitleLeft{
-	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -70px;
+	background:transparent url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat left -70px;
 	padding-left: 4px;
 }
 
 .GadgetBgTitleCenter{
-	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") repeat-x left -92px;
+	background:transparent url("/translatorGadget/skin/images/ImageGadGets.gif") repeat-x left -92px;
 	height: 22px;
 }
 
 .GadgetBgTitleRight{
-	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right -70px;
+	background:transparent url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat right -70px;
 	padding-right:3px;
 }
 
@@ -126,7 +125,7 @@ a {
 }
 
 .GadgetBgTitleCenter .IconEditGadGet{
-	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat center -180px;
+	background:transparent url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat center -180px;
 	display: block;
 	height: 13px;
 	width: 13px;
@@ -134,7 +133,7 @@ a {
 }
 
 .GadgetBgTitleCenter .IconMinimize{
-	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat center -202px;
+	background:transparent url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat center -202px;
 	display: block;
 	height: 13px;
 	width: 13px;
@@ -142,35 +141,33 @@ a {
 }
 
 .GadgetBgTitleCenter .IconClose{
-	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat center -224px;
+	background:transparent url("/translatorGadget/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat center -224px;
 	display: block;
 	height: 13px;
 	width: 13px;
 	padding: 6px 2px 0px 2px;
-}
-*/			
-/**************************** Content Gadgets *********************************/
-/*			
+}	
+/**************************** Content Gadgets *********************************/	
 .ContentGadGet{
 }
 
 .ContentGadGet .BgLeftTitleContent{
-	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left top;	
+	background:transparent url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat left top;	
 	padding-left: 6px;
 }
 
 .ContentGadGet .BgCenterTitleContent{
-	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") repeat-x left -35px;	
+	background:transparent url("/translatorGadget/skin/images/ImageGadGets.gif") repeat-x left -35px;	
 	height: 35px;
 	line-height: 35px;
 }
 
 .ContentGadGet .BgRightTitleContent{
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right top;	
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat right top;	
 	padding-right: 8px;
 }
 .ContentGadGet .IconArrow{
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right -246px;
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat right -246px;
 	float: right;
 	height: 35px;
 	width: 16px;
@@ -185,18 +182,18 @@ a {
 }
 
 .ContentGadGet .BgLeftMsgContent{
-	background:#FF4040 url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left top;	
+	background:#FF4040 url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat left top;	
 	padding-left: 6px;
 }
 
 .ContentGadGet .BgCenterMsgContent{
-	background:#FF4040 url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") repeat-x left -35px;	
+	background:#FF4040 url("/translatorGadget/skin/images/ImageGadGets.gif") repeat-x left -35px;	
 	height: 35px;
 	line-height: 35px;
 }
 
 .ContentGadGet .BgRightMsgContent{
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right top;	
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat right top;	
 	padding-right: 8px;
 }
 .ContentGadGet .TextMsg{
@@ -206,51 +203,51 @@ a {
 
 
 .ContentGadGet .BgLeftFooterContent{
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -114px;	
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat left -114px;	
 	padding-left: 9px;
 }
 
 .ContentGadGet .BgCenterFooterContent{
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") repeat-x center -130px;
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") repeat-x center -130px;
 	height: 8px;
 }
 
 .ContentGadGet .BgRightFooterContent{
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat right -122px;	
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat right -122px;	
 	padding-right: 8px;
 }
 
 .ContentGadGet .BgCenterContent{
-	background: url("/eXoDMSGadgets/skin/images/BgBottomConten.gif") repeat-x left bottom;
+	background: url("/translatorGadget/skin/images/BgBottomConten.gif") repeat-x left bottom;
 }
 .ContentGadGet .BgLeftContent{
 	border-left: solid 1px #9c9c9c;
 }
 
 .ContentGadGet .BgRightContent{
-	background: url("/eXoDMSGadgets/skin/images/GagetBorRight.gif") repeat-y right top;
+	background: url("/translatorGadget/skin/images/GagetBorRight.gif") repeat-y right top;
 	padding-right: 3px;
 }
 
 .ContentGadGet .BgRightContent .IconDriver {
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -281px;
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat left -281px;
 
 }
 
 .ContentGadGet .BgRightContent .IconPdf {
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -352px;
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat left -352px;
 }
 
 .ContentGadGet .BgRightContent .IconDoc {
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -396px;
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat left -396px;
 }
 
 .ContentGadGet .BgRightContent .IconJpg {
-	background: url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -440px;
+	background: url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat left -440px;
 }
 
 .ContentGadGet .BgRightContent .IconNote {
-	background:transparent url("/eXoDMSGadgets/skin/images/ImageGadGets.gif") no-repeat left -308px;
+	background:transparent url("/translatorGadget/skin/images/ImageGadGets.gif") no-repeat left -308px;
 }
 
 .ContentGadGet .BgRightContent .BgTitle{
@@ -300,7 +297,6 @@ a {
 .ContentGadGet .BgRightContent a:hover{
 	color: orange;
 }
-*/
 </style>
 
 <body onload="init()">
@@ -314,17 +310,14 @@ a {
 						</div>
 					</div>
 				</div>
-				<!--
 				<div class="BgLeftTitleContent">
 					<div class="BgRightTitleContent">
 						<div class="BgCenterTitleContent">
-							<div class="IconArrow"><span></span></div>
 							<div class="TextTitle">Translator</div>
 							<div class="ClearRight"><span></span></div>
 						</div>
 					</div>
 				</div>
-				-->
 				<div class="BgRightContent">
 					<div class="BgLeftContent">
 						<div class="BgCenterContent">
